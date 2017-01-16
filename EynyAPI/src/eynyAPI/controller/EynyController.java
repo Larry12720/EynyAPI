@@ -17,11 +17,12 @@ public class EynyController {
 	 * @return
 	 */
 	@RequestMapping(value="/search", method=RequestMethod.GET)
-    public String search(@RequestParam String term, @RequestParam String page) {
+    public String search(@RequestParam String term){//@RequestParam String page) {
         EynyImp eynyImp = new EynyImp();
         String data = "";
         try {
-			String response = eynyImp.getVideoList(term, Integer.parseInt(page));
+        	//Take in one for now
+			String response = eynyImp.getVideoList(term, 1);
 			if(!response.equals(""))
 			{
 				data = FilterHelper.filterResponse(response);
